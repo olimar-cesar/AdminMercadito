@@ -1,0 +1,59 @@
+ALTER PROCEDURE [dbo].[usp_ListProveedores_GetProveedores]
+	
+AS
+BEGIN
+	
+	select 
+	  V.Id,
+	  V.Nombre,
+	  V.Domicilio,
+	  V.Tel,
+	  V.Email
+	from
+	    tblProveedor V
+	     
+END
+
+
+
+
+
+
+
+ALTER PROCEDURE [dbo].[usp_ListProveedor_DeleteProveedor] 
+	@Id int
+AS
+BEGIN
+	delete from tblProveedor where Id=@Id
+END
+
+
+
+
+ALTER PROCEDURE [dbo].[usp_EditProveedor_Actualizar]
+(
+   @Id int,
+   @Nombre varchar(200),
+   @Domicilio varchar(200),
+   @Telefono varchar(200),
+   @Email varchar(200)
+)
+AS
+BEGIN
+	
+	update tblProveedor set Nombre=@Nombre,Domicilio=@Domicilio,Tel=@Telefono,Email=@Email where Id=@Id
+	
+	select @@ROWCOUNT as CantidadAfectada
+end
+
+
+
+ALTER PROCEDURE [dbo].[usp_Autocomplete_GetProveedores]
+	@Query varchar(100)
+AS
+BEGIN
+	
+	select Id, Nombre as Descripcion from tblProveedor where Nombre like '%'+@Query+'%'
+END
+
+

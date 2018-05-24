@@ -1,0 +1,25 @@
+<script>
+        $(function () {
+            $("#txtFecha").datepicker({
+                dateFormat: 'dd/mm/yy', showOn: 'button', buttonImage: 'images/Calendar_scheduleHS.png', buttonImageOnly: true, changeMonth: true,
+                changeYear: true, gotoCurrent: true
+            });
+        });
+        
+
+        $(function () {
+            $('#txtProveedor').simpleAutoComplete('Autocomplete.aspx', {
+                autoCompleteClassName: 'autocomplete',
+                selectedClassName: 'sel',
+                attrCallBack: 'rel',
+                identifier: 'Proveedor'
+            }, fnProveedorCallback);
+
+        });
+
+        function fnProveedorCallback(par) {
+            //par[0] id
+            //par[1] descripcion
+        }
+
+    </script>
